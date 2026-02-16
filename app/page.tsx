@@ -17,7 +17,6 @@ export default function Home() {
     <main className="relative overflow-x-hidden">
       <Header />
       <HeroSection />
-      <WhyLexoraSection />
       <ERPProblemSection />
       <IndustryProblemsSection />
       <TheEquationSection />
