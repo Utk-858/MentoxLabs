@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <img src="/assets/logo/logo1_blackbg.png" alt="Lexora Logo" className="h-10 w-auto mb-4" />
+            <img src="https://res.cloudinary.com/dqskebjcf/image/upload/v1771236912/logo1_blackbg_iuht1n.png" alt="Lexora Logo" className="h-10 w-auto mb-4" />
             <p className="text-gray-400 mb-6">
               Building the future of enterprise reasoning with Lexora - The Agentic Reasoning Framework
             </p>

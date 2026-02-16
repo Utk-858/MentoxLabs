@@ -21,8 +21,8 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="font-bold text-gray-darker"
-            style={{ fontSize: '45.68px', lineHeight: '100%' }}
+            className="font-bold text-gray-darker text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+            style={{ lineHeight: '100%' }}
           >
             Mentox Labs
           </motion.h2>
@@ -32,8 +32,8 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-semibold text-gray-dark"
-            style={{ fontSize: '34.26px', lineHeight: '100%' }}
+            className="font-semibold text-gray-dark text-xl sm:text-2xl md:text-3xl"
+            style={{ lineHeight: '100%' }}
           >
             Presents
           </motion.p>
@@ -43,10 +43,10 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="py-8"
+            className="py-4 sm:py-6 md:py-8"
           >
             <div 
-              className="text-8xl md:text-9xl font-bold tracking-tight text-gray-darker"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-gray-darker"
               style={{ fontFamily: 'Incompleeta, sans-serif' }}
             >
               LEXORA
@@ -58,7 +58,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-3xl md:text-4xl font-semibold"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-4"
           >
             The Agentic <span className="text-primary">Reasoning Framework</span>
           </motion.h3>
@@ -68,8 +68,8 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="font-bold text-gray-darker max-w-4xl mx-auto"
-            style={{ fontSize: '26.55px', lineHeight: '100%' }}
+            className="font-bold text-gray-darker max-w-4xl mx-auto text-base sm:text-lg md:text-xl lg:text-2xl"
+            style={{ fontSize: 'clamp(16px, 4vw, 26.55px)', lineHeight: '120%' }}
           >
             <span className="text-primary">Lexora</span> Makes Business Logic Survive{' '}
             <span className="text-primary">Systems</span>,{' '}

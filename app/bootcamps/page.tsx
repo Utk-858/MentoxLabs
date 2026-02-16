@@ -61,8 +61,8 @@ const BootcampsPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="font-bold text-gray-darker mb-6"
-              style={{ fontSize: '45.68px', lineHeight: '100%' }}
+              className="font-bold text-gray-darker mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              style={{ lineHeight: '110%' }}
             >
               Empowering the Next<br />
               Generation of <span className="text-primary">AI Innovators</span>
@@ -73,8 +73,8 @@ const BootcampsPage = () => {
               initial={{ opacity: 0 }}
               animate={isHeroInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="font-bold text-gray-darker max-w-4xl mx-auto mb-10"
-              style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '26.55px', lineHeight: '100%' }}
+              className="font-bold text-gray-darker max-w-4xl mx-auto mb-10 text-base sm:text-lg md:text-xl lg:text-2xl px-4"
+              style={{ fontFamily: 'Montserrat, sans-serif', lineHeight: '120%' }}
             >
               A non-profit initiative by Mentox to train students in real-world AI and ML skills
             </motion.p>
@@ -107,6 +107,12 @@ const BootcampsPage = () => {
 
       {/* What is the Initiative Section */}
       <WhatIsSection />
+
+      {/* What We Did Section - NEW */}
+      <WhatWeDidSection />
+
+      {/* Bootcamp Highlights Section - NEW */}
+      <BootcampHighlightsSection />
 
       {/* Bootcamp 2.0 Section */}
       <Bootcamp20Section />
@@ -342,19 +348,39 @@ const Bootcamp10Section = () => {
           </p>
         </motion.div>
 
-        {/* Image Placeholders */}
+        {/* Session Images */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
-          {['Orientation Session', 'AI Fundamentals Workshop', 'Session 2 By Google Developer Expert'].map((title, index) => (
+          {[
+            { title: 'Orientation Session', image: 'https://res.cloudinary.com/dqskebjcf/image/upload/v1771237401/Copy_of_20251116-DSC00853_1_1_njsdhc.jpg' },
+            { title: 'AI Fundamentals Workshop', image: 'https://res.cloudinary.com/dqskebjcf/image/upload/v1771238164/_MG_6990_wkhv9c.jpg' },
+            { title: 'Session 2 By Google Developer Expert', image: 'https://res.cloudinary.com/dqskebjcf/image/upload/v1771237057/bootcamp_06_m4u7wu.jpg' }
+          ].map((session, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="relative rounded-2xl overflow-hidden bg-gray-800 h-64"
+              className="relative rounded-2xl overflow-hidden bg-gray-800 h-64 group cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              {/* Background Image */}
+              <img 
+                src={session.image}
+                alt={session.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement
+                  target.style.display = 'none'
+                }}
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300" />
+              
+              {/* Title */}
               <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold text-white">{title}</h3>
+                <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                  {session.title}
+                </h3>
               </div>
             </motion.div>
           ))}
@@ -459,6 +485,181 @@ const BePartSection = () => {
               <button className={`w-full py-3 rounded-full text-white font-semibold ${option.buttonStyle} transition-all`}>
                 {option.buttonText}
               </button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// What We Did Section Component
+const WhatWeDidSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  return (
+    <section ref={ref} className="py-20 bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-darker mb-4">
+            Building The Future
+          </h2>
+          <p className="text-2xl text-primary font-semibold">
+            Mentox AI Bootcamp Initiative
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: What We Did */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <h3 className="text-3xl font-bold text-gray-darker mb-6">What We Did?</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  • Organized A Non-Profit <span className="text-primary font-semibold">AI Bootcamp In Collaboration With Google</span> For Developers, GDG Cloud Jaipur, TensorFlow User Group Jaipur, And GDG Jaipur
+                </p>
+              </div>
+              
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  • Delivered <span className="text-primary font-semibold">Industry-Grade AI Training</span> Through Structured Workshops And Hands-On Bootcamps
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative rounded-full overflow-hidden border-4 border-primary shadow-2xl aspect-square">
+              <img 
+                src="https://res.cloudinary.com/dqskebjcf/image/upload/v1771237401/bootcamp_01_uvnlid.png" 
+                alt="Bootcamp classroom with students"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement
+                  target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%234277FF" width="400" height="400"/%3E%3Ctext fill="%23fff" font-size="20" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EBootcamp Image%3C/text%3E%3C/svg%3E'
+                }}
+              />
+            </div>
+            {/* Decorative blur */}
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Bootcamp Highlights Section Component
+const BootcampHighlightsSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const highlights = [
+    {
+      stat: '400+ Students',
+      description: 'Trained Across Two Editions',
+      color: 'from-blue-500 to-indigo-600',
+    },
+    {
+      stat: 'Real Production Constraints',
+      description: 'Curriculum Designed Around Real Production Constraints, Not Academic Demos',
+      color: 'from-purple-500 to-pink-600',
+    },
+    {
+      stat: 'Focus Areas',
+      items: ['Machine Learning', 'Data Science', 'Generative AI'],
+      color: 'from-emerald-500 to-teal-600',
+    },
+  ]
+
+  return (
+    <section ref={ref} className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Group Photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img 
+              src="https://res.cloudinary.com/dqskebjcf/image/upload/v1771237055/bootcamp_05_jp05as.jpg" 
+              alt="Bootcamp group photo"
+              className="w-full h-auto"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement
+                target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"%3E%3Crect fill="%234277FF" width="1200" height="400"/%3E%3Ctext fill="%23fff" font-size="24" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EBootcamp Group Photo%3C/text%3E%3C/svg%3E'
+              }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-12"
+        >
+          Bootcamp <span className="text-primary">Highlights</span>
+        </motion.h2>
+
+        {/* Highlight Cards */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {highlights.map((highlight, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 + index * 0.15, duration: 0.8 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100"
+            >
+              {/* Gradient top bar */}
+              <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${highlight.color} rounded-t-3xl`} />
+              
+              <div className="pt-4">
+                {highlight.stat && (
+                  <h3 className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${highlight.color} bg-clip-text text-transparent mb-3`}>
+                    {highlight.stat}
+                  </h3>
+                )}
+                
+                {highlight.description && (
+                  <p className="text-gray-700 leading-relaxed">
+                    {highlight.description}
+                  </p>
+                )}
+                
+                {highlight.items && (
+                  <ul className="space-y-3 mt-4">
+                    {highlight.items.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-primary rounded-full" />
+                        <span className="text-gray-700 font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

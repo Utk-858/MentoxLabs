@@ -54,35 +54,7 @@ const WhatMakesLexoraSpecialSection = () => {
         </motion.h2>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-3xl p-8 shadow-xl"
-              >
-                <div className="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Icon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-primary font-semibold mb-6">{feature.subtitle}</p>
-                <ul className="space-y-3">
-                  {feature.points.map((point, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-primary mt-1">◉</span>
-                      <span className="text-gray-700">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )
-          })}
-        </div>
-
+        
         {/* Quote */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -104,27 +76,39 @@ const WhatMakesLexoraSpecialSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20 grid md:grid-cols-2 gap-8 items-center"
+          className="mt-20 flex flex-col md:flex-row gap-6 items-stretch"
         >
-          {/* Left side - 3 pillars */}
-          <div className="flex gap-6">
+          {/* Left side - 3 vertical pills */}
+          <div className="flex gap-4 md:gap-6">
             {['100% Logic Portability', 'The Agentic Reasoning', 'Migrate At Warp Speed'].map((text, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-gray-800 text-white px-6 py-12 rounded-2xl transform -rotate-3 flex items-center justify-center flex-1"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 1 + i * 0.1 }}
+                className="bg-gray-900 text-white rounded-3xl flex items-center justify-center px-4 py-8 md:px-6 md:py-12 flex-1 min-h-[200px] md:min-h-[280px]"
               >
-                <p className="transform rotate-90 text-sm font-bold whitespace-nowrap">{text}</p>
-              </div>
+                <p className="transform -rotate-90 text-xs sm:text-sm md:text-base font-bold whitespace-nowrap">
+                  {text}
+                </p>
+              </motion.div>
             ))}
           </div>
 
-          {/* Right side - Card */}
-          <div className="bg-gradient-to-br from-blue-300 to-blue-500 rounded-3xl p-12 shadow-2xl">
-            <h3 className="text-4xl font-bold mb-6">Migrate At Warp Speed</h3>
-            <p className="text-lg leading-relaxed">
+          {/* Right side - Blue Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 1.3 }}
+            className="bg-gradient-to-br from-primary to-blue-600 rounded-3xl p-8 md:p-12 shadow-2xl flex-1 flex flex-col justify-center"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">
+              Migrate At Warp Speed
+            </h3>
+            <p className="text-base md:text-lg text-white/90 leading-relaxed">
               Why Rebuild The Brain Just To Change The Limbs? Swap ERP Adapters In Weeks, Not Years
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
